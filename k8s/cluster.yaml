@@ -1,14 +1,55 @@
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: vet-clinic-cluster
+#   region: us-east-1
+# availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
+# managedNodeGroups:
+#   - name: ng-1
+#     instanceType: t3a.medium
+#     desiredCapacity: 2
+#     minSize: 2
+#     maxSize: 3
+#     volumeSize: 8
+
+# From Eksctl Doc
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
   name: vet-clinic-cluster
   region: us-east-1
-availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
-managedNodeGroups:
+
+nodeGroups:
   - name: ng-1
-    instanceType: t3a.medium
-    desiredCapacity: 2
-    minSize: 2
-    maxSize: 3
-    volumeSize: 8
+    instanceType: m5.large
+    desiredCapacity: 1
+  - name: ng-2
+    instanceType: m5.xlarge
+    desiredCapacity: 1
+
+# ChatGPT
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: vet-clinic-cluster
+#   region: us-east-1
+
+# availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
+
+# managedNodeGroups:
+#   - name: ng-1
+#     instanceType: t3a.medium
+#     desiredCapacity: 2
+#     minSize: 2
+#     maxSize: 3
+#     volumeSize: 8
+#     iam:
+#       withAddonPolicies:
+#         autoScaler: true
+#         ebs: true
+#         fsx: true
+#         efs: true
+#         albIngress: true
